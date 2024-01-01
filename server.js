@@ -6,9 +6,10 @@ var app = express()
 var User = require('./models/User.js')
 var Post = require('./models/Post.js')
 //mongoose.connect("mongodb+srv://cmh1506:spocburth@cluster0.eirag.mongodb.net/?retryWrites=true&w=majority") //mongodb://127.0.0.1/pssocial
-mongoose.connect("mongodb://spoc-account:UeloOt5iylX0BRoubY27GlgLKC5x8zC7Oyll5tGBJlJ6mASZYkd5fvbYgJDRJeqiGJdaKdLqnQNdACDbHOhISg%3D%3D@spoc-account.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@spoc-account@")
+const URL = process.env.URL
+mongoose.connect(URL)
 
-//mongoose.connect("mongodb+srv://spocAdmin:hamsti1(?)@spoc-db.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000")
+
 var auth = require('./auth')
 var jwt = require("jwt-simple")
 
