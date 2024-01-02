@@ -29,6 +29,10 @@ var jwt = require("jwt-simple")
 app.use(cors())
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  res.send("Liebling, es ist aus.")
+})
+
 
 
 app.get('/posts/:id', async (req, res) => {
