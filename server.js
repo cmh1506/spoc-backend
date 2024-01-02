@@ -54,11 +54,11 @@ app.post('/post', auth.checkAuthenticated, (req, res) => {
 
 app.get('/users', async (req, res) => {
   try {
-    var users = await User.find({}, "-pwd -__v")
+    var users = await User.find({})
     res.json(users)
   } catch (error) {
     console.log(error)
-    res.sendStatus(500)
+    res.sendStatus(500).send(error)
   }
 
 })
