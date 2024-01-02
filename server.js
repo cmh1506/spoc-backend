@@ -6,6 +6,8 @@ var app = express()
 var User = require('./models/User.js')
 var Post = require('./models/Post.js')
 var env = require('dotenv').config()
+const port = process.env.PORT || 3000
+
 //mongoose.connect("mongodb+srv://cmh1506:spocburth@cluster0.eirag.mongodb.net/?retryWrites=true&w=majority") //mongodb://127.0.0.1/pssocial
 const URL = process.env.URL
 //mongoose.connect(URL)
@@ -75,4 +77,4 @@ app.get('/user/:_id', async (req, res) => {
 
 app.use('/auth', auth.router)
 
-app.listen(3000)
+app.listen(port)
