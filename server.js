@@ -5,9 +5,22 @@ var mongoose = require("mongoose")
 var app = express()
 var User = require('./models/User.js')
 var Post = require('./models/Post.js')
+var env = require('dotenv').config()
 //mongoose.connect("mongodb+srv://cmh1506:spocburth@cluster0.eirag.mongodb.net/?retryWrites=true&w=majority") //mongodb://127.0.0.1/pssocial
 const URL = process.env.URL
-mongoose.connect(URL)
+//mongoose.connect(URL)
+
+mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
+   auth: {
+     username: process.env.COSMOSDB_USER,
+     password: process.env.COSMOSDB_PASSWORD
+   },
+ useNewUrlParser: true,
+ useUnifiedTopology: true,
+ retryWrites: false
+ })
+ .then(() => console.log('Connection to CosmosDB successful'))
+ .catch((err) => console.error(err));
 
 
 var auth = require('./auth')
