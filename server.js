@@ -58,7 +58,7 @@ app.get('/users', async (req, res) => {
     res.json(users)
   } catch (error) {
     console.log(error)
-    res.sendStatus(500).send(error)
+    res.send(error)
   }
 
 })
